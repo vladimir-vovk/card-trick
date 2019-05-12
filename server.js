@@ -30,7 +30,7 @@ app.post('/secret', (req, res) => {
       name,
       card
     }
-    collection.insertOne(entry, (err, result) => {
+    collection.update({ name }, entry, { upsert: true }, (err, result) => {
       if (err) {
         console.log(err)
       } else {
