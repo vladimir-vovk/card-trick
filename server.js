@@ -62,7 +62,7 @@ app.get('/:param*', (req, res) => {
             const card = result[0].card
             res.sendFile(path.join(__dirname, `assets/images/${card}.png`))
           } else {
-            res.senStatus(404)
+            res.sendStatus(404)
           }
           db.close()
         })
