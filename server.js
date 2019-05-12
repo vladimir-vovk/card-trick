@@ -36,7 +36,7 @@ app.post('/secret', (req, res) => {
       } else {
         res.send('Added to database')
       }
-      db.close()
+      client.close()
     })
   })
 })
@@ -53,6 +53,7 @@ app.get('/:param*', (req, res) => {
 
       if (name === 'deleteall') {
         collection.remove({})
+        client.close()
         res.send('database reset')
       } else {
         collection.find({ name }).toArray((err, result) => {
@@ -64,7 +65,7 @@ app.get('/:param*', (req, res) => {
           } else {
             res.sendStatus(404)
           }
-          db.close()
+          client.close()
         })
       }
     }
