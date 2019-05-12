@@ -15,7 +15,7 @@ app.get('/secret', (req, res) => {
   return res.sendFile(path.join(__dirname, 'secret.html'))
 })
 
-app.port('/secret', (req, res) => {
+app.post('/secret', (req, res) => {
   MongoClient.connect(URI, { useNewUrlParser: true }, (err, client) => {
     if (err) {
       console.log(err)
