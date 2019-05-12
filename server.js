@@ -61,7 +61,7 @@ app.get('/:param*', (req, res) => {
             console.log(err)
           } else if (result.length) {
             const card = result[0].card
-            res.sendFile(path.join(__dirname, `assets/images/${card}.png`))
+            res.sendFile(path.join(__dirname, `assets/images/cards/${card}.png`))
           } else {
             res.sendStatus(404)
           }
