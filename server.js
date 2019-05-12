@@ -64,10 +64,9 @@ app.get('/:param*', (req, res) => {
           } else {
             res.senStatus(404)
           }
+          db.close()
         })
       }
-
-      db.close()
     }
   })
 })
