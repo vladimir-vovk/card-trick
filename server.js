@@ -11,8 +11,37 @@ const DB_NAME = process.env.DB_NAME || 'card_trick'
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  return res.sendFile(path.join(__dirname, 'index.html'))
+})
+
 app.get('/secret', (req, res) => {
   return res.sendFile(path.join(__dirname, 'secret.html'))
+})
+
+app.post('/check-name', (req, res) => {
+  MongoClient.connect(URI, { useNewUrlParser: true }, (err, client) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+
+    const db = client.db(DB_NAME)
+    const collection = db.collection('names')
+    const { name = 'undefined' } = req.body
+
+    collection.find({ name }).toArray((err, result) => {
+      if (err) {
+        console.log(err)
+      } else if (result.length) {
+        const card = result[0].card
+        res.sendFile(path.join(__dirname, `assets/images/cards/${card}.png`))
+      } else {
+        res.sendFile(path.join(__dirname, '404.html'))
+      }
+      client.close()
+    })
+  })
 })
 
 app.post('/secret', (req, res) => {

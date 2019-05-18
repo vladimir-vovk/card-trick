@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Magic cards</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  </head>
+
+  <body class="bg-image container-center">
+    <h1 class="title">Введи свое имя</h1>
+    <form action='/check-name' method='post'>
+      <input type="text" name="name" class="input-name" id="name" autofocus>
+      <button id="submit-name" type="submit" class="submit-name">Фокус - покус!</button>
+    </form>
+
+    <script src="assets/js/scripts.js"></script>
+    <script>
+      window.onload = event => {
+        const sparkle = new Sparkle(document.body)
+        sparkle.start()
+
+        window.addEventListener('resize', event => {
+          sparkle.resize()
+        })
+      }
+    </script>
+  </body>
+</html>
