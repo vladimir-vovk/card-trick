@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 /* Serve static */
-app.use(express.static(path.join(global.appRoot, 'assets')))
+app.use(express.static('assets'))
 
 router(app)
 
