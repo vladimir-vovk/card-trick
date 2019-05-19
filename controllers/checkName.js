@@ -11,7 +11,7 @@ module.exports = function (req, res) {
         console.log(err)
       } else if (result.length) {
         const card = result[0].card
-        res.sendFile(path.join(global.appRoot, `assets/images/cards/${card}.png`))
+        res.sendFile(path.join(global.appRoot, `public/images/cards/${card}.png`))
       } else {
         res.sendFile(path.join(global.appRoot, 'views/404.html'))
       }
