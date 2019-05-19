@@ -3,10 +3,9 @@ const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
 
-const router = require('./routes/router')
-
 /* Application root folder */
 global.appRoot = path.resolve(__dirname)
+const router = require('./routes/router')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

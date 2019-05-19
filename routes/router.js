@@ -1,9 +1,9 @@
 const index = require('../controllers/index')
-const checkName = require('..controllers/checkName')
+const checkName = require('../controllers/checkName')
 const { nameForm, storeName } = require('../controllers/secret')
 const deleteAll = require('../controllers/deleteAll')
 
-export function router (app) {
+module.exports = function (app) {
   app.get('/', index)
   app.get('/secret', nameForm)
   app.post('/secret', storeName)
