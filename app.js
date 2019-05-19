@@ -10,8 +10,7 @@ const router = require('./routes/router')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-/* Serve static */
-app.use(express.static('assets'))
+app.use('/public', express.static(path.join(global.appRoot, 'public')))
 
 router(app)
 
