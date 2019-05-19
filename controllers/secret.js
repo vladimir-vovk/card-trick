@@ -1,11 +1,11 @@
 const path = require('path')
 const { connectDb } = require(path.join(global.appRoot, 'db'))
 
-export function nameForm (req, res) {
+module.exports.nameForm = function (req, res) {
   return res.sendFile(path.join(global.appRoot, 'views/secret.html'))
 }
 
-export function storeName (req, res) {
+module.exports.storeName = function (req, res) {
   connectDb((client, db) => {
     const collection = db.collection('names')
     const { name = 'undefined', rank = 'ace', suit = 'hearts' } = req.body

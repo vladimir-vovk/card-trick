@@ -1,7 +1,7 @@
 const path = require('path')
 const { connectDb } = require(path.join(global.appRoot, 'db'))
 
-export default function deleteAll (req, res) {
+module.exports = function (req, res) {
   connectDb((client, db) => {
     const collection = db.collection('names')
     collection.remove({})
